@@ -1,6 +1,5 @@
 var express = require('express');
 
-
 var routes = function(Beak) {
     var beakRouter = express.Router();
     var beakController = require('../controllers/beakController')(Beak);

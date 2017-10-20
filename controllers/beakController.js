@@ -1,5 +1,6 @@
 var path = require('path');
 var config = require('../config');
+var _ = require('lodash');
 
 var beakController = function(Beak) {
     var Beacon = require('../model/beaconModel');
@@ -13,23 +14,37 @@ var beakController = function(Beak) {
                 var beacon = new Beacon({
                     beak : beak,
                     ipaddress : req.connection.remoteAddress,
+                    useragent : req.headers['user-agent'],
                     datetime : new Date()
                 });
+                //console.log(req.headers['user-agent']);
+                Beacon.find({beak: beak}, function(err, result) {
+                    var restr = "";
 
-                console.log("Email to recipient:"+beak.recipientemail+" opened from ip - "+beacon.ipaddress+" at "+beacon.datetime);
-                beacon.save(function(err) {
-                    if(err) {
-                        console.log("Error saving beacon data");
+                    if(result.length === 0) {
+                        restr += "opened for first time from";
+                    } else {
+                        if(_.findIndex(result, {ipaddress: beacon.ipaddress, useragent: beacon.useragent}) >= 0) {
+                            restr += "reopened from same device with"
+                        } else {
+                            restr += "reopened from another device with"
+                        }
                     }
-                    res.sendFile(path.join(__dirname, '../images/1px.gif'));
+
+                    // this info can be emailed using nodemailer
+                    console.log("Email to recipient:"+beak.recipientemail+" "+restr+" ip - "+beacon.ipaddress+" at "+beacon.datetime);
+                    beacon.save(function(err) {
+                        if(err) {
+                            console.log("Error saving beacon data");
+                        }
+                        res.sendFile(path.join(__dirname, '../images/1px.gif'));
+                    });
                 });
             } 
         });
     };
 
     var post = function(req, res) {
-
-        console.log("posting..", req.body.recipientemail);
         var beak = new Beak(req.body);
         if(!req.body.recipientemail) {
             res.status(400);
