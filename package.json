@@ -11,7 +11,7 @@
     "lint": "esw -c .eslintrc src --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ENV=test mocha tests/*.js --exit"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,12 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
     "mongoose": "^4.12.3",
-    "npm-run-all": "^4.1.1"
+    "npm-run-all": "^4.1.1",
+    "should": "^13.1.2",
+    "sinon": "^4.0.1",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^4.9.0",

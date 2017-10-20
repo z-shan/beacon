@@ -3,13 +3,13 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var config = require('./config');
-var db = mongoose.connect(config.database);
+var db;
 
-/*if(process.env.ENV === 'Test') {
+if(process.env.ENV === 'test') {
     db = mongoose.connect(config.database_test);
 } else {
-    
-}*/
+    mongoose.connect(config.database);
+}
 
 var Beak = require('./model/beakModel');
 var app = express();
