@@ -1,0 +1,35 @@
+{
+    "root": true,
+    "extends": "eslint:recommended",
+    "env": {
+        "browser": true,
+        "node": true,
+        "jquery": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "rules": {
+        "quotes": 0,
+        "no-trailing-spaces": 0,
+        "eol-last": 0,
+        "no-unused-vars": 0,
+        "no-underscore-dangle": 0,
+        "no-alert": 0,
+        "no-lone-blocks": 0,
+        // enable additional rules
+        //"indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+
+        // override default options for rules from base configurations
+        //"comma-dangle": ["error", "always"],
+        "no-cond-assign": ["error", "always"],
+
+        // disable rules from base configurations
+        "no-console": "off"
+    }
+}
