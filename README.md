@@ -24,11 +24,11 @@ Chrome 61
 
 ## Rest API calls
 * Generate beak code 
- POST - /beak/generate/
- Pass - "recipientemail" in the post body
- Returns - url which can be included in emails
+    * POST - /beak/generate/
+    * Required - "recipientemail" in the post body
+    * Returns - url which can be included in emails
 
 * Beacon hit
- GET - /beak/:beakCode
- Returns - pixel image
+    * GET - /beak/:beakCode
+    * Returns - pixel image
  
