@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="switch">
+    <input id="switch-on" type="radio" name="radio-switch" value="on" checked />
+    <label for="switch-on">ON</label>
+    <input id="switch-off" type="radio" name="radio-switch" value="off" />
+    <label for="switch-off">OFF</label>
+  </div>
+</div>
+
+
+.switch {
+  font-family: Helvetica;
+  font-weight: 400;
+  border: 1px solid lightgray;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 5px;
+}
+.switch label:hover {
+  cursor: pointer;
+}
+
+.switch label {
+  float: left;
+}
+
+.switch input {
+  position: absolute;
+  clip: rect(0,0,0,0);
+}
+
+.switch input:checked + label {
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+  opacity: 1;
+}
+
+.switch label {
+  display: inline-block;
+  width: 40px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition:all 0.1s ease-in-out;
+  user-select: none;
+  font: #FAFAFA;
+  opacity: 0.6;
+}
