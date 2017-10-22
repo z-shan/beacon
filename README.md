@@ -3,7 +3,7 @@
 ## Prerequisites
 nodejs  > 4
 
-Developed on 7.1.0
+Developed on 8.7.0
 Tested on 4.7.3 and 8.7.0
 
 Browser Support
