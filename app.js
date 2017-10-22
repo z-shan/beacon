@@ -2,7 +2,6 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     logger = require('./logger').logger;
-    //winston = require('winston');
 
 var config = require('./config');
 var db;
@@ -13,22 +12,9 @@ if(process.env.ENV === 'test') {
     mongoose.connect(config.database);
 }
 
-/*winston.remove(winston.transports.Console);
-var logger = new (winston.Logger)({
-    transports: [
-        new (winston.transports.DailyRotateFile)({
-            filename: config.logdir + '/beacon.log',
-            json: false,
-            datePattern: '.dd-MM-yyyy',
-           level: config.logLevel,
-           maxsize: 104857600 })
-   ],
-   exitOnError: false
-});*/
-
-var Beak = require('./model/beakModel');
-var Beacon = require('./model/beaconModel');
-var app = express();
+var Beak = require('./model/beakModel'),
+    Beacon = require('./model/beaconModel'),
+    app = express();
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
