@@ -4,8 +4,8 @@
   "description": "Email tracker",
   "main": "app.js",
   "scripts": {
-    "start-dev": "npm-run-all --parallel security-check lint:watch open:server",
-    "start": "npm-run-all --parallel security-check run:server",
+    "start-dev": "npm-run-all --parallel security-check lint:watch test open:server",
+    "start": "npm run security-check && npm run test && npm run run:server",
     "run:server": "node app.js",
     "open:server": "nodemon app.js",
     "lint": "esw -c .eslintrc src --color",
