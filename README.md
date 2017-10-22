@@ -26,7 +26,7 @@ Chrome 61
 * Generate beak code 
     * POST - /beak/generate/
     * Required - "recipientemail" in the post body
-    * Returns - url which can be included in emails
+    * Returns - url which can be included in image src
 
 * Beacon hit
     * GET - /beak/:beakCode
