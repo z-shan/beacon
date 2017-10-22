@@ -11,7 +11,7 @@ var beakController = function(Beak, Beacon, logger) {
                 //console.log("Beak not found -"+req.params.beakCode);
                 //res.sendFile(path.join(__dirname, '../images/1px.gif'));
                 res.status(404);
-                //res.send("Beak not found");
+                res.send("Beak not found");
             } else if(beak) {
                 var beacon = new Beacon({
                     beak : beak,
@@ -19,7 +19,7 @@ var beakController = function(Beak, Beacon, logger) {
                     useragent : req.headers['user-agent'],
                     datetime : new Date()
                 });
-                //console.log(req.headers['user-agent']);
+                
                 Beacon.find({beak: beak}, function(err, result) {
                     var restr = "";
 
@@ -39,7 +39,7 @@ var beakController = function(Beak, Beacon, logger) {
                     
                     beacon.save(function(err) {
                         if(err) {
-                            console.log("Error saving beacon data");
+                            logger.error("Error saving beacon data");
                         }
                         res.sendFile(path.join(__dirname, '../images/1px.gif'));
                     });
